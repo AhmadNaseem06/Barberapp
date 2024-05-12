@@ -119,7 +119,23 @@ class BHLoginScreenState extends State<BHLoginScreen> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                         ),
                         onPressed: () {
-                          BHDashedBoardScreen().launch(context);
+
+
+                          String username = emailCont.text;
+                          String password = passwordCont.text;
+
+                          if (username == 'ahmadnaseem' && password == 'ahmad123') {
+                            // If the username and password match, navigate to the main screen.
+                            BHDashedBoardScreen().launch(context);
+                          } else {
+                            // If the username and password do not match, show an error message.
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Invalid username or password.'),
+                                duration: Duration(seconds: 2),
+                              ),
+                            );
+                          }
                         },
                         child: Text(
                           BHBtnSignIn,
